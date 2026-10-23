@@ -1,0 +1,38 @@
+LISTE DE NOËL SUR NETLIFY (avec cadeaux « pris » partagés)
+==========================================================
+
+Contenu
+  public/index.html            -> votre liste (à remplacer par votre export)
+  netlify/functions/pris.mjs   -> petit service qui retient quels cadeaux sont pris
+  package.json, netlify.toml   -> réglages
+
+1) Préparer votre liste
+   - Ouvrez liste-de-noel.html, remplissez-la, cliquez « Valider ma liste ».
+   - Cliquez « Télécharger pour publier ».
+   - Renommez le fichier obtenu en index.html et mettez-le dans le dossier public/
+     (à la place de celui qui s'y trouve).
+
+2) Mettre en ligne (important : un simple glisser-déposer du seul index.html
+   ne suffit PAS, le service « pris » ne serait pas installé)
+
+   Option A - avec GitHub (la plus simple ensuite)
+     - Créez un dépôt GitHub avec tout ce dossier.
+     - Sur Netlify : « Add new site » > « Import an existing project » > votre dépôt.
+     - Laissez les réglages proposés, puis « Deploy ».
+
+   Option B - avec la ligne de commande
+     npm install
+     npm install -g netlify-cli
+     netlify login
+     netlify deploy --prod
+
+3) Mettre à jour la liste plus tard
+   - Refaites « Télécharger pour publier », remplacez public/index.html, redéployez.
+   - Les cadeaux déjà pris restent pris : ils sont retenus par Netlify, pas dans la page.
+
+Remarques
+   - Vous verrez aussi les cadeaux pris en ouvrant le site (la surprise est un peu gâchée !).
+   - Pour remettre un cadeau disponible : le visiteur qui l'a pris clique « Annuler »,
+     ou vous supprimez la ligne dans Netlify > Blobs > liste-noel-pris.
+   - La liste porte un identifiant interne : gardez toujours la même liste d'origine
+     (liste-de-noel.html dans le même navigateur) pour ne pas perdre le suivi.
